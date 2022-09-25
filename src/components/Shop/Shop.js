@@ -3,14 +3,17 @@ import Product from '../Product/Product';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([])
     const loadData = async() =>{
         const res = await fetch('products.json');
         const data = await res.json();
         setProducts(data);
     }
 
-    const addToCartHandler = () =>{
-        console.log('clicked');
+    const addToCartHandler = (product) =>{
+        //do not do this: cart.push(product) (its not good for diff algorithm)
+        const newCart = [...cart, product];
+        setCart(newCart)
     }
     useEffect(()=>{
         loadData()
@@ -28,7 +31,7 @@ const Shop = () => {
                 }
             </div>
             <div className="products">
-                <h1>This is sidebar</h1>
+                <h1>Selected Item:{cart.length}</h1>
             </div>
         </div>
     );
