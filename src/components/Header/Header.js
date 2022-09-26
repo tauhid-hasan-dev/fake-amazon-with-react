@@ -4,7 +4,7 @@ import logo from '../../images/Logo.svg'
 const Header = () => {
     return (
         <div>
-            <div className="navbar bg-nav-color text-white shadow-lg px-[5%] py-4">
+            <div className="navbar bg-nav-color text-white shadow-lg px-[5%] py-4 ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
