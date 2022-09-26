@@ -6,15 +6,15 @@ const Product = (props) => {
     const {addToCartHandler, product} = props;
     const {img, name , price, seller, ratings} = product;
     return (
-        <div className='h-[508px] border-[1px] rounded relative'>
+        <div className=' border-[1px] rounded relative'>
             <div className='p-2'>
                 <img src={img} alt=""  className='rounded'/>
-                <div className='flex flex-col pt-3 justify-between h-[140px]'>
-                    <div className='col'>
+                <div className='flex flex-col pt-3  h-52 '>
+                    <div >
                         <p className='font-semibold'>{name}</p>
                         <p>Price: ${price}</p>
                     </div>
-                    <div className='col mt-auto'>
+                    <div className='mt-4'>
                         <p>Manufacturer: {seller}</p>
                         <p>Ratings: {ratings}</p>
                     </div>
