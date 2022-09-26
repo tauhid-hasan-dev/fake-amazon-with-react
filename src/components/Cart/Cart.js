@@ -1,6 +1,16 @@
 import React from 'react';
 
 const Cart = ({cart}) => {
+    console.log(cart);
+    //finding the total price from the cart array
+    let totalPrice = 0;
+    for(let product of cart){
+        console.log(product.price)
+        totalPrice = totalPrice + product.price;
+    }
+
+    //finding the shipping charge from the cart array
+    
     return (
         <div className='sticky top-0 p-10'>
             <p className='text-2xl font-bold'>Order Summary</p>
@@ -11,7 +21,7 @@ const Cart = ({cart}) => {
                 </div>
                 <div className='flex justify-between'>
                     <p>Total Price:</p>
-                    <p className='font-bold'>$0</p>
+                    <p className='font-bold'>${totalPrice}</p>
                 </div>
                 <div className='flex justify-between'>
                     <p>Total Shipping Charge:</p>
