@@ -1,24 +1,50 @@
 import React, { useEffect, useState } from 'react';
+import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([])
-    const loadData = async() =>{
-        const res = await fetch('products.json');
-        const data = await res.json();
-        setProducts(data);
-    }
 
+    //add product to cart
     const addToCartHandler = (product) =>{
         //do not do this: cart.push(product) (its not good for diff algorithm)
         const newCart = [...cart, product];
-        setCart(newCart)
+        setCart(newCart);
+        addToDb(product.id);
     }
     useEffect(()=>{
+        //fetching data from the json file
+        const loadData = async() =>{
+            //console.log('first line product fetch')
+            const res = await fetch('products.json');
+            const data = await res.json();
+            setProducts(data);
+            //console.log('products loaded');
+        }
         loadData()
     },[])
+
+  useEffect(()=>{
+    const storedData = getStoredCart();
+    const newSavedCart = []
+    /* for(const id in storedData){
+        //finding the product by id from products data to be displayed in th UI
+        console.log(products)
+        const addedProduct = products.find(product => product.id === id)
+        //set the quantity from local storage to displaye object
+        console.log(addedProduct);
+        const quantity = storedData[id];
+        addedProduct.quantity = quantity;
+
+        //after updating quantity property pushing the object to the new empty array
+        newSavedCart.push(addedProduct);
+    }
+    //changing the previous cart and setting new cart to previous cart
+    setCart(newSavedCart) */
+
+  },[products])
 
     return (
         <div className='grid grid-cols-5'>

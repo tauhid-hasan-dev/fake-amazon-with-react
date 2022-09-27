@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Cart = ({cart}) => {
-    console.log(cart);
+    //console.log(cart);
     //finding the total price from the cart array
     let totalPrice = 0;
     for(let product of cart){

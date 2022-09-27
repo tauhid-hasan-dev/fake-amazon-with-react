@@ -6,7 +6,7 @@ const Product = (props) => {
     const {addToCartHandler, product} = props;
     const {img, name , price, seller, ratings} = product;
     return (
-        <div className=' border-[1px] rounded relative'>
+        <div className=' border-[1px] rounded-lg relative'>
             <div className='p-2'>
                 <img src={img} alt=""  className='rounded'/>
                 <div className='flex flex-col pt-3  h-52 '>
