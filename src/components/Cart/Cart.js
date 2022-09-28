@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Cart = ({cart}) => {
-    //console.log(cart);
+    console.log(cart);
+    const [totalProduct, setTotalProduct] = useState(0);
     //finding the total price from the cart array
     let totalPrice = 0;
-    for(let product of cart){
-        console.log(product.price)
-        totalPrice = totalPrice + product.price;
-    }
-
-    //finding the shipping charge from the cart array
+    
     let shippingCharge = 0;
-    for(let product of cart){
+    for(const product of cart){  
+        console.log(product.quantity)            
+        //totalProduct = totalProduct + product.quantity 
+        totalPrice = totalPrice + product.price;
         shippingCharge = shippingCharge + product.shipping;
     }
+    
+    useEffect(()=>{
+        const total = cart.reduce((prev, current)=> prev + current.quantity, 0);
+        setTotalProduct(total);
+    },[cart])
 
     //finding the total tax amount from the cart array
     let tax = 0;
@@ -27,7 +31,7 @@ const Cart = ({cart}) => {
             <div className='mt-5 flex flex-col gap-3'>
                 <div className='flex justify-between'>
                     <p>Selected Items:</p>
-                    <p className='font-bold'>{cart.length}</p>
+                    <p className='font-bold'>{totalProduct}</p>
                 </div>
                 <div className='flex justify-between'>
                     <p>Total Price:</p>
