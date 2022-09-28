@@ -10,9 +10,18 @@ const Shop = () => {
     //add product to cart
     const addToCartHandler = (product) =>{
         //do not do this: cart.push(product) (its not good for diff algorithm)
-        const newCart = [...cart, product];
+        const selected = cart.find(p => p.id === product.id)
+        const rest = cart.filter(p => p.id !== product.id);
+        let newCart;
+        if(!selected){
+            product.quantity = 1;
+            newCart = [...cart, product]
+        }else{
+            selected.quantity = selected.quantity + 1;
+            newCart = [...rest, selected]
+        }
         setCart(newCart);
-        addToDb(product.id);
+        addToDb(product.id); 
     }
 
     //fetching data from the json file

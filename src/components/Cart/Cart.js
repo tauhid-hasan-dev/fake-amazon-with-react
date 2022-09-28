@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from 'react';
 
 const Cart = ({cart}) => {
     console.log(cart);
-    const [totalProduct, setTotalProduct] = useState(0);
+    //const [totalProduct, setTotalProduct] = useState(0);
     //finding the total price from the cart array
     let totalPrice = 0;
-    
     let shippingCharge = 0;
+    let totalProduct = 0;
+
     for(const product of cart){  
-        console.log(product.quantity)            
-        //totalProduct = totalProduct + product.quantity 
-        totalPrice = totalPrice + product.price;
-        shippingCharge = shippingCharge + product.shipping;
+        //console.log(product.quantity)            
+        totalProduct = totalProduct + product.quantity 
+        totalPrice = totalPrice + (product.price * product.quantity)  ;
+        shippingCharge = shippingCharge + (product.shipping * product.quantity);
     }
     
-    useEffect(()=>{
-        const total = cart.reduce((prev, current)=> prev + current.quantity, 0);
-        setTotalProduct(total);
-    },[cart])
 
     //finding the total tax amount from the cart array
     let tax = 0;
