@@ -21,7 +21,6 @@ function App() {
       loader: productsAndCartLoader,
       element: <Orders></Orders>},
     
-
       {path: '/inventory', element: <Inventory></Inventory>},
       {path: '/about', element: <About></About> },
     ]

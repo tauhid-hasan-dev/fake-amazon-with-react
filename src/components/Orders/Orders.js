@@ -13,7 +13,6 @@ const Orders = () => {
         const rest = cart.filter(product => product.id !== id);
         setCart(rest);
         removeFromDb(id);
-
     }
     return (
         <div className='grid grid-cols-5'>

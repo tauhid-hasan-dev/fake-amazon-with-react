@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const Cart = ({cart}) => {
     console.log(cart);
@@ -47,6 +49,10 @@ const Cart = ({cart}) => {
                     <p className='text-xl font-semibold'>${grandTotal.toFixed(2)}</p>
                 </div>
             </div>
+            <button className=" bg-red-500 hover:bg-red-700 p-3 rounded-lg hover text-white flex justify-between w-full mt-5  items-center">
+                <p>Clear Cart</p>  
+                <FontAwesomeIcon icon={faTrash} />
+            </button>
         </div>
     );
 };

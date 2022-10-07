@@ -5,13 +5,12 @@ import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 
 const Shop = () => {
-    /* const [products, setProducts] = useState([]); */
     const products = useLoaderData();
     const [cart, setCart] = useState([]);
 
-    const clearCart = () =>{
-    setCart
-    }
+    /* const clearCart = () =>{
+        setCart
+    } */
 
     //add product to cart
     const addToCartHandler = (product) =>{
@@ -30,15 +29,6 @@ const Shop = () => {
         addToDb(product.id); 
     }
 
-    //fetching data from the json file
-    /* const loadData = async() =>{
-        const res = await fetch('products.json');
-        const data = await res.json();
-        setProducts(data);
-    }
-    useEffect(()=>{
-        loadData()
-    },[]) */
 
     useEffect(()=>{
         const storedData = getStoredCart();
