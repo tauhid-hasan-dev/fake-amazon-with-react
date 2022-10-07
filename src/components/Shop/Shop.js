@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);
+    /* const [products, setProducts] = useState([]); */
+    const products = useLoaderData();
     const [cart, setCart] = useState([]);
 
     //add product to cart
@@ -25,16 +27,14 @@ const Shop = () => {
     }
 
     //fetching data from the json file
-    const loadData = async() =>{
-        //console.log('first line product fetch')
+    /* const loadData = async() =>{
         const res = await fetch('products.json');
         const data = await res.json();
         setProducts(data);
-        //console.log('products loaded');
     }
     useEffect(()=>{
         loadData()
-    },[])
+    },[]) */
 
     useEffect(()=>{
         const storedData = getStoredCart();
