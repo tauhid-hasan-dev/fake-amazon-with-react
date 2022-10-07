@@ -9,6 +9,10 @@ const Shop = () => {
     const products = useLoaderData();
     const [cart, setCart] = useState([]);
 
+    const clearCart = () =>{
+    setCart
+    }
+
     //add product to cart
     const addToCartHandler = (product) =>{
         //do not do this: cart.push(product) (its not good for diff algorithm)
