@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+    const [error, setError] = useState('');
+    const [match, setMatch] = useState('');
     const handleSubmit = (event)=> {
         event.preventDefault();
         const form = event.target;
@@ -9,7 +11,16 @@ const SignUp = () => {
         const password = form.password.value;
         const confirm = form.confirm.value;
         console.log(email, password, confirm);
-
+        if(password.length < 6){
+            setError('Password must be atleast 6 character!!')
+        }else{
+            setError('');
+        }
+        if(password !== confirm){
+            setMatch('Password did not match')
+        }else{
+            setMatch('')
+        }
     }
     return (
         <div className='p-20  flex flex-col items-center'>
@@ -26,6 +37,7 @@ const SignUp = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password" name='password' placeholder="Your password" className="input input-bordered" required/>
+                        <p className='text-red-500 mt-2'>{error}</p>
                        
                     </div>
                     <div className="form-control">
@@ -33,7 +45,7 @@ const SignUp = () => {
                             <span className="label-text">Confirm Password</span>
                         </label>
                         <input type="password" name='confirm' placeholder="Confirm password" className="input input-bordered" required/>
-                       
+                        <p className='text-red-500'>{match}</p>
                     </div>
                     <div className="form-control mt-6">
                         <button className="btn bg-btn-color text-black border-btn-color hover:bg-orange-300 hover:border-orange-300">Sign Up</button>
