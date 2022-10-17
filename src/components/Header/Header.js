@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/UserContext';
 import logo from '../../images/Logo.svg'
 
 const Header = () => {
+   const {user} = useContext(AuthContext);
     return (
         <div>
             <div className="navbar bg-nav-color text-white shadow-lg px-[5%] py-4 ">
@@ -18,6 +20,7 @@ const Header = () => {
                             <li><Link to = '/about'>About</Link></li>
                             <li><Link to = '/login'>Login</Link></li>
                             <li><Link to = '/signup'>SignUp</Link></li>
+                            
                         </ul>
                     </div>
                     <img src={logo} alt="" />
@@ -30,6 +33,8 @@ const Header = () => {
                         <li><Link to = '/about'>About</Link></li>
                         <li><Link to = '/login'>Login</Link></li>
                         <li><Link to = '/signup'>SignUp</Link></li>
+                        <li> <p >{user?.email}</p></li>
+                       
                     </ul>
                 </div>
             </div>
