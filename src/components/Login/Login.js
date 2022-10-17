@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/UserContext';
 
 const Login = () => {
+   const {signIn} = useContext(AuthContext);
+
+    const handleSumbit = (event)=>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password) 
+
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    }
+
     return (
         <div className='p-20  flex flex-col items-center'>
-            <form className="p-10 shadow-2xl w-[450px] ">
+            <form className="p-10 shadow-2xl w-[450px] " onSubmit={handleSumbit}>
                     <p className='text-center text-3xl font-regular'>Login</p>
                     <div className="form-control">
                         <label className="label">

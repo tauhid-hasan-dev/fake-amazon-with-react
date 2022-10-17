@@ -18,7 +18,13 @@ Auth setup
 3- Set AuthContext.Provider 
 4- make sure to set the children
 5- set value to the AuthContext.Provider
-6-  Export AuthContext (Very very <important></important>)
+6-  Export AuthContext (Very very <important></important>);
+7- get form data;
 
-  
+ */
+
+/*
+1- get auth from firebase 
+2- crete user, by using a function and return createUserWithEmailAndPassWord
+ 
  */

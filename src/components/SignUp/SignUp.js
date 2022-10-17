@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/UserContext';
 
 const SignUp = () => {
     const [error, setError] = useState('');
     const [match, setMatch] = useState('');
+
+    const {createUser} = useContext(AuthContext)
+
     const handleSubmit = (event)=> {
         event.preventDefault();
         const form = event.target;
@@ -21,6 +25,19 @@ const SignUp = () => {
         }else{
             setMatch('')
         }
+
+        //creating user with email and password 
+        createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => {
+            console.error(error)
+        })
+
+        //sign in with firebase
+        
     }
     return (
         <div className='p-20  flex flex-col items-center'>
