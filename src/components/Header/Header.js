@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/UserContext';
 import logo from '../../images/Logo.svg'
 
 const Header = () => {
-   const {user} = useContext(AuthContext);
+   const {user, logOut} = useContext(AuthContext);
     return (
         <div>
             <div className="navbar bg-nav-color text-white shadow-lg px-[5%] py-4 ">
@@ -20,21 +20,22 @@ const Header = () => {
                             <li><Link to = '/about'>About</Link></li>
                             <li><Link to = '/login'>Login</Link></li>
                             <li><Link to = '/signup'>SignUp</Link></li>
-                            
                         </ul>
                     </div>
                     <img src={logo} alt="" />
                 </div>
-                <div className="navbar-end hidden lg:flex ">
+                <div className="navbar-end hidden lg:flex w-[90%]">
                     <ul className="menu menu-horizontal p-0 text-white">
                         <li><Link to ='/'>Shop</Link></li>
                         <li><Link to = '/orders'>Orders</Link></li>
                         <li><Link to = '/inventory'>Inventory</Link></li>
                         <li><Link to = '/about'>About</Link></li>
-                        <li><Link to = '/login'>Login</Link></li>
-                        <li><Link to = '/signup'>SignUp</Link></li>
-                        <li> <p >{user?.email}</p></li>
-                       
+                        {  user?.uid ?
+                               <li><Link className='bg-btn-color text-black' onClick={logOut}>Log Out</Link></li>
+                            : <>
+                                <li><Link to = '/login'>Login</Link></li>
+                                <li><Link to = '/signup'>SignUp</Link></li>
+                             </>}
                     </ul>
                 </div>
             </div>

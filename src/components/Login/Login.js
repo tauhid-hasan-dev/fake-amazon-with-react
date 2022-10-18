@@ -15,12 +15,14 @@ const Login = () => {
         signIn(email, password)
         .then(result => {
             const user = result.user;
+            form.reset();
             console.log(user);
         })
         .catch(error => {
             console.error(error)
         })
     }
+
 
     return (
         <div className='p-20  flex flex-col items-center'>
