@@ -26,5 +26,25 @@ Auth setup
 /*
 1- get auth from firebase 
 2- crete user, by using a function and return createUserWithEmailAndPassWord
- 
+ */
+
+
+/*
+ ---------------------------------
+ FIREBASE HOSTING
+ ---------------------------------
+
+ //One time for each computer
+1-  npm install -g firebase-tools   
+2-  firebase login
+
+//for each project one time
+1- firebase init  
+   What do you want to use as your public directory? build  (this answer should be build)
+   single page application will be - Yes
+
+
+//For every deploy 
+1- npm run build
+2- firebase deploy
  */

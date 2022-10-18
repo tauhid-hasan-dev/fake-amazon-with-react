@@ -25,7 +25,7 @@ function App() {
       loader: productsAndCartLoader,
       element: <Orders></Orders>},
     
-      {path: '/inventory', element: <Inventory></Inventory>},
+      {path: '/inventory', element: <PrivateRoute><Inventory></Inventory></PrivateRoute>},
       {path: '/shipping', element: <PrivateRoute><Shipping></Shipping></PrivateRoute>},
       {path: '/about', element: <About></About> },
       {path: '/login', element: <Login></Login> },

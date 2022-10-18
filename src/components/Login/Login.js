@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/UserContext';
 const Login = () => {
    const {signIn} = useContext(AuthContext);
    const nevigate = useNavigate();
+   //to nevigate current location after log in (integrated from react router dom)
    const location = useLocation();
    const from = location.state?.from?.pathname || '/';
 
@@ -28,8 +29,6 @@ const Login = () => {
     }
 
  
-
-
     return (
         <div className='p-20  flex flex-col items-center'>
             <form className="p-10 shadow-2xl w-[450px] " onSubmit={handleSumbit}>
