@@ -30,7 +30,6 @@ const Orders = () => {
                                             product = {product}
                                             handleRemoveItem = {handleRemoveItem}
                                             >
-                                            
                                        </ReviewItem>)
                 }
                 {
@@ -39,7 +38,11 @@ const Orders = () => {
             </div>
             <div className="products bg-cart-color col-span-5 lg:col-span-1 order-1 lg:order-2">
                 <Cart cart={cart} clearCart={clearCart}>
-                    
+                <Link to='/shipping'>
+                        <button className=" bg-orange-500 hover:bg-orange-600 p-3 rounded-lg hover text-white flex justify-between w-full mt-5  items-center" >
+                        <p>Proceed Shipping</p>  
+                        </button>
+                    </Link>
                 </Cart>
             </div>
         </div>

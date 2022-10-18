@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-const Cart = ({cart, clearCart}) => {
+const Cart = ({cart, clearCart, children}) => {
     console.log(cart);
     //const [totalProduct, setTotalProduct] = useState(0);
     //finding the total price from the cart array
@@ -53,6 +53,7 @@ const Cart = ({cart, clearCart}) => {
                 <p>Clear Cart</p>  
                 <FontAwesomeIcon icon={faTrash}  />
             </button>
+            {children}
         </div>
     );
 };
