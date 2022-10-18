@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
-import Product from '../Product/Product';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
