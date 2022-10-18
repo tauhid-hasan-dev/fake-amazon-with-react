@@ -38,7 +38,9 @@ const Orders = () => {
                 }
             </div>
             <div className="products bg-cart-color col-span-5 lg:col-span-1 order-1 lg:order-2">
-                <Cart cart={cart} clearCart={clearCart}></Cart>
+                <Cart cart={cart} clearCart={clearCart}>
+                    
+                </Cart>
             </div>
         </div>
     );

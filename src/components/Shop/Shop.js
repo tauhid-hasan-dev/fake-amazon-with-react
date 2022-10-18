@@ -62,7 +62,9 @@ const Shop = () => {
                 }
             </div>
             <div className="products bg-cart-color">
-                <Cart cart={cart} clearCart={clearCart}></Cart>
+                <Cart cart={cart} clearCart={clearCart}>
+                    
+                </Cart>
             </div>
         </div>
     );

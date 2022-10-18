@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 
 const Login = () => {
    const {signIn} = useContext(AuthContext);
+   const nevigate = useNavigate();
 
     const handleSumbit = (event)=>{
         event.preventDefault();
@@ -17,11 +18,14 @@ const Login = () => {
             const user = result.user;
             form.reset();
             console.log(user);
+            nevigate('/')
         })
         .catch(error => {
             console.error(error)
         })
     }
+
+ 
 
 
     return (
