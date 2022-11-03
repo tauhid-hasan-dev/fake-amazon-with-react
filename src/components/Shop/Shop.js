@@ -7,12 +7,10 @@ import Product from '../Product/Product';
 /*
 
 To make pagination we need: 
-
 Total Product count: loaded;
 Per page product count: 10;
 number of page: total product count/ Per page product count
 current page(we need to load data according to the page numbers);
-
  */
 
 const Shop = () => {
@@ -32,7 +30,8 @@ const Shop = () => {
                 setProducts(data.products);
                 setCount(data.count);
             })
-    }, [page, size])
+    }, [page, size]);
+
     const pages = Math.ceil(count / size);
 
     const clearCart = () => {
