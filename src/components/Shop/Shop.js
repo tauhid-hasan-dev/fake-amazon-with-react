@@ -23,7 +23,6 @@ const Shop = () => {
     const [page, setPage] = useState(0);  //page number
     const [size, setSize] = useState(10);  //product per page
 
-    /* `https://fake-amazon-server-side.vercel.app/products?page=${page}&size=${size}` */
 
     useEffect(() => {
         const url = `https://fake-amazon-server-side.vercel.app/products?page=${page}&size=${size}`;
@@ -109,14 +108,14 @@ const Shop = () => {
                             return <div key={number}
 
                                 className="btn-group">
-                                <button onClick={() => setPage(number)} className={`btn btn-md rounded ${page === number && 'bg-orange-600 px-6 hover:bg-orange-600 border-orange-600'}`} >{number}</button>
+                                <button onClick={() => setPage(number)} className={`btn btn-md rounded ${page === number && 'bg-orange-600 px-6 hover:bg-orange-600 border-orange-600'}`} >{number + 1}</button>
                             </div>
                         }
                         )
                     }
                     <select onChange={(event) => setSize(event.target.value)} className="select select-bordered w-[100px] ">
                         <option value="5">5</option>
-                        <option value="10" selected>10</option>
+                        <option value="10" >10</option>
                         <option value="15">15</option>
                         <option value="20">20</option>
                     </select>
