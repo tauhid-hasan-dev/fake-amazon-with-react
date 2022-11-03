@@ -57,23 +57,40 @@ const Shop = () => {
         addToDb(product._id);
     }
 
+    //we are using a post method here to get data by id, normally we use get method with query to get a special data according to query. In this case the amount of product in cart is constant, it can be little or huge, to request a huge(uncertain) data we need to use post method here.
 
     useEffect(() => {
         const storedData = getStoredCart();
         const newSavedCart = []
-        for (const id in storedData) {
-            //finding the product by id from products data to be displayed in th UI
-            const addedProduct = products.find(product => product._id === id)
-            //set the quantity from local storage to displaye object
-            if (addedProduct) {
-                const quantity = storedData[id];
-                addedProduct.quantity = quantity;
-                //after updating quantity property pushing the object to the new empty array
-                newSavedCart.push(addedProduct);
-            }
-        }
-        //changing the previous cart and setting new cart to previous cart
-        setCart(newSavedCart)
+        const ids = Object.keys(storedData);
+        console.log(ids);
+
+
+        fetch('https://fake-amazon-server-side.vercel.app/productsByIds', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(ids)
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                for (const id in storedData) {
+                    //finding the product by id from products data to be displayed in th UI
+                    const addedProduct = data.find(product => product._id === id)
+                    //set the quantity from local storage to display object
+                    if (addedProduct) {
+                        const quantity = storedData[id];
+                        addedProduct.quantity = quantity;
+                        //after updating quantity property pushing the object to the new empty array
+                        newSavedCart.push(addedProduct);
+                    }
+                }
+                //changing the previous cart and setting new cart to previous cart
+                setCart(newSavedCart)
+            })
+
 
     }, [products])
 

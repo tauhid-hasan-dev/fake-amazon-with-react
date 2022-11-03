@@ -20,7 +20,7 @@ function App() {
       children: [
         {
           path: '/',
-          loader: () => fetch('https://fake-amazon-server-side.vercel.app/products'),
+          //loader: () => fetch('https://fake-amazon-server-side.vercel.app/products'),
           element: <Shop></Shop>
         },
 
