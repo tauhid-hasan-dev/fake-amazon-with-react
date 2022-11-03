@@ -23,15 +23,17 @@ const Shop = () => {
     const [page, setPage] = useState(0);  //page number
     const [size, setSize] = useState(10);  //product per page
 
+    /* `https://fake-amazon-server-side.vercel.app/products?page=${page}&size=${size}` */
+
     useEffect(() => {
-        const url = `https://fake-amazon-server-side.vercel.app/products?page=${page}&size=${size}`
+        const url = `https://fake-amazon-server-side.vercel.app/products?page=${page}&size=${size}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 setProducts(data.products);
                 setCount(data.count);
             })
-    }, [])
+    }, [page, size])
     const pages = Math.ceil(count / size);
 
     const clearCart = () => {
